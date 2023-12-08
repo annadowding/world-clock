@@ -1,6 +1,7 @@
 //Paris
 function updateTime() {
   let parisElement = document.querySelector("#paris");
+
   let parisDateElement = parisElement.querySelector(".date");
   let parisTimeElement = parisElement.querySelector(".time");
   let parisTime = moment().tz("Europe/Paris");
@@ -18,3 +19,25 @@ function updateTime() {
 }
 
 setInterval(updateTime, 1000);
+
+function displayCityData(event) {
+  let cityTimezone = event.target.value;
+  //   let cityName = cityTimezone.replace("/", "  ").split("/")[1];
+  let cityTime = moment().tz(cityTimezone);
+  let citiesDisplay = document.querySelector("#cities");
+  citiesDisplay.innerHTML = `
+<div class="city" id="sydney">
+        <div>
+          <h2>${cityTimezone}</h2>
+          <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
+        </div>
+        <div class="time">${cityTime.format("h:mm:ss")} ${cityTime.format(
+    "A"
+  )}</div>
+      </div>
+    </div>
+`;
+}
+
+let citiesDropdown = document.querySelector("#city");
+citiesDropdown.addEventListener("change", displayCityData);
