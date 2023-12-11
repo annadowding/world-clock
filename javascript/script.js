@@ -18,11 +18,16 @@ function updateTime() {
   tokyoTimeElement.innerHTML = tokyoTime.format("h:mm:ss A");
 }
 
+updateTime();
 setInterval(updateTime, 1000);
 
 function displayCityData(event) {
   let cityTimezone = event.target.value;
-  //   let cityName = cityTimezone.replace("/", "  ").split("/")[1];
+  // if (cityTimeZone === "current") {
+  //   cityTimezone = moment.tz.guess();
+
+  // }
+  let cityName = cityTimezone.replace("/", "  ").split("/")[1];
   let cityTime = moment().tz(cityTimezone);
   let citiesDisplay = document.querySelector("#cities");
   citiesDisplay.innerHTML = `
