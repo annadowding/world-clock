@@ -38,7 +38,6 @@ function displayCityData(event) {
   )}</div>
           </div>
     </div>
-    <a href = "/"> All cities </a>
     `;
 }
 updateTime();
